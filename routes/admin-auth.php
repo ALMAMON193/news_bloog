@@ -23,8 +23,8 @@ Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(functio
 });
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    Route::get('/admin/dashboard', function () {
+    return view('admin.index');
 })->middleware(['verified'])->name('dashboard');
 
 
