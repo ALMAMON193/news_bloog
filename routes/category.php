@@ -12,8 +12,8 @@ Route::middleware('auth:admin')->prefix('admin/category')->group(function () {
 })->middleware(['verified'])->name('dashboard');
   Route::get('/view',[CategoryController::class,'view'])->name('view.category');
   Route::post('/add',[CategoryController::class,'Add'])->name('add.category');
- 
-  Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('edit');
-  Route::post('/update/{id}',[CategoryController::class,'update'])->name('update');
+  Route::post('/update/{id}',[CategoryController::class,'update'])->name('update.category');
+  Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete.category');
+
 });
 

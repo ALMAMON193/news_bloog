@@ -44,5 +44,48 @@ class CategoryController extends Controller
             return response()->json(['message' => 'Failed to create category'], 500);
         }
     }
-    
+    public function update(Request $request, $id){
+
+         // Validate the request data
+         $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Find the category by ID
+        $category = Category::findOrFail($id);
+
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/category_image'), $imageName);
+            // Delete previous image file if exists
+            if (file_exists(public_path('uploads/category_image/' . $category->image))) {
+                unlink(public_path('uploads/category_image/' . $category->image));
+            }
+            $category->image = $imageName;
+        }
+
+        // Update category details
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return response()->json(['message' => 'Category updated successfully']);
+    }
+    public function destroy($id)
+{
+    $category = Category::find($id);
+    if ($category) {
+        $category->delete();
+        return response()->json(['success' => 'Category deleted successfully']);
+    }
+    return response()->json(['error' => 'Category not found'], 404);
 }
+
+        
+}
+    
+

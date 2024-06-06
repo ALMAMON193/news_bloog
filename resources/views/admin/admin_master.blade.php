@@ -41,20 +41,23 @@
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
-     <!-- Bootstrap Tags Input CSS -->
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
-     <style>
-         .bootstrap-tagsinput {
-             width: 100%;
-         }
-         .bootstrap-tagsinput .tag {
-             margin-right: 2px;
-             color: white;
-             background-color: #007bff;
-             padding: 0.2em 0.6em;
-             border-radius: 4px;
-         }
-     </style>
+    <!-- Swit Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap Tags Input CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+    <style>
+        .bootstrap-tagsinput {
+            width: 100%;
+        }
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: white;
+            background-color: #007bff;
+            padding: 0.2em 0.6em;
+            border-radius: 4px;
+        }
+    </style>
 
 </head>
 
@@ -71,8 +74,6 @@
         @include('admin.body.sidebar')
         <!-- Left Sidebar End -->
 
-
-
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -80,7 +81,6 @@
         <!-- end main content-->
 
     </div>
-
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
@@ -101,63 +101,22 @@
     <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}">
     </script>
 
-
     <!-- DataTables JS -->
+    <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
+    <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
-            $('#datatable').DataTable({
-                responsive: true,
-
+            $('#selection-datatable').DataTable({
+                responsive: true
             });
         });
     </script>
-
-    <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
-
-    <!-- App js -->
-    <script src="{{ asset('backend/assets/js/app.js') }}"></script>
-
-     <!-- Bootstrap Tags Input JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-     <script>
-         $(document).ready(function() {
-             $('#product_size_en').tagsinput();
-         });
- 
-         // Example of form validation (to be integrated with actual form submission logic)
-         function validateForm() {
-             var input = $('#product_size_en').val();
-             if (!input) {
-                 $('#error-message').text('This field is required.');
-                 return false;
-             }
-             $('#error-message').text('');
-             return true;
-         }
-     </script>
-
-       <!-- CKEditor JS -->
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-
-    //ajax link 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-      $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-    </script>
-   
-
 </body>
-
 </html>
