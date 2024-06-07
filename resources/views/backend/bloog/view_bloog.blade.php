@@ -47,6 +47,7 @@
                                                 Edit
                                             </button>
                                             <button class="btn btn-danger deleteBloogBtn" data-id="{{ $item->id }}">Delete</button>
+
                                         </td>
                                     </tr>
                                     @endforeach

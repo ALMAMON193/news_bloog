@@ -97,6 +97,20 @@ class PostController extends Controller
 
         return response()->json(['message' => 'Blog updated successfully']);
     }
+    public function delete($id)
+{
+    $bloog = Post::find($id);
+
+    if ($bloog) {
+        $bloog->delete();
+        return response()->json(['message' => 'Bloog deleted successfully.']);
+    } else {
+        return response()->json(['error' => 'Bloog not found.'], 404);
+    }
+}
+
+}
+
  
     
-}
+
