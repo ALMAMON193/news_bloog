@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd\IndexController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('front-end.index');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,3 +25,4 @@ require __DIR__.'/auth.php';
 require __DIR__.'/bloog.php';
 require __DIR__.'/category.php';
 require __DIR__.'/admin-auth.php';
+require __DIR__.'/home.php';

@@ -1,77 +1,53 @@
-@extends('admin.admin_master')
+@extends('front-end.home')
 @section('content')
-
-    <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini">
-    <div class="container"><!-- STRART CONTAINER -->
-        <div class="row align-items-center">
-        	<div class="col-md-6">
-                <div class="page-title">
-            		<h1>Login</h1>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active">Login</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
-
-<!-- START MAIN CONTENT -->
-<div class="main_content">
-
-<!-- START LOGIN SECTION -->
-<div class="login_register_wrap section">
+ <!-- login -->
+ <section class="wrap__section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-md-10">
-                <div class="login_wrap">
-            		<div class="padding_eight_all bg-white">
-                        <div class="heading_s1">
-                            <h3>Login</h3>
-                        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mx-auto" style="max-width: 380px;">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Sign in</h4>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                        
-                            <div class="form-group mb-3">
-                                <input type="text" required="" class="form-control" name="email" placeholder="Your Email">
+                            <a href="#" class="btn btn-facebook btn-block mb-2 text-white"> <i
+                                    class="fa fa-facebook"></i> &nbsp; Sign
+                                in
+                                with
+                                Facebook</a>
+                            <a href="#" class="btn btn-primary btn-block mb-4"> <i class="fa fa-google"></i> &nbsp;
+                                Sign in with
+                                Google</a>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Username" type="text">
                             </div>
-                            <div class="form-group mb-3">
-                                <input class="form-control" required="" type="password" name="password" placeholder="Password">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" type="password">
                             </div>
-                            <div class="login_footer form-group mb-3">
-                                <div class="chek-form">
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
-                                    </div>
-                                </div>
-                                <a href="#">Forgot password?</a>
+
+                            <div class="form-group">
+                                <a href="#" class="float-right">Forgot password?</a>
+                                <label class="float-left custom-control custom-checkbox"> <input type="checkbox"
+                                        class="custom-control-input" checked="">
+                                    <span class="custom-control-label"> Remember </span>
+                                </label>
                             </div>
-                            <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-fill-out btn-block" name="login">Log in</button>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login </button>
                             </div>
                         </form>
-                        <div class="different_login">
-                            <span> or</span>
-                        </div>
-                        <ul class="btn-login list_none text-center">
-                            <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                            <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
-                        </ul>
-                        <div class="form-note text-center">Don't Have an Account? <a href="{{ route('register') }}">Sign up now</a></div>
                     </div>
                 </div>
+
+                <p class="text-center mt-4 mb-0">Don't have account? <a href="{{ route('register') }}">Sign up</a></p>
             </div>
         </div>
     </div>
-</div>
-<!-- END LOGIN SECTION -->
+</section>
+<!-- end login -->
+
+
+
 
 <form method="POST" action="{{ route('register') }}">
     @csrf
