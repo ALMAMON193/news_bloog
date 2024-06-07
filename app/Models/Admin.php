@@ -20,8 +20,14 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
-    ];
+        'phone',
+        'address',
+        'profile',
+        'city',
+        'desegregation'
 
+    ];
+   
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,7 +52,4 @@ class Admin extends Authenticatable
         ];
     }
 }
-
-
-
 
