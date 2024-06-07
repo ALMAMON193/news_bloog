@@ -1,3 +1,4 @@
+{{-- data-category_id="{{ $item->category['id'] }}" --}}
 @extends('admin.admin_master')
 @section('content')
 
@@ -18,8 +19,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Title</th>
-                                        <th>Short-description</th>
-                                        <th>Category Name</th>
+                                        <th>Category</th>
                                         <th>Author</th>
                                         <th>Post Date || Time</th>
                                         <th>Actions</th>
@@ -28,23 +28,25 @@
                                 <tbody>
                                     @foreach ($allData as $item)
                                     <tr>
-                                        
-                                        <td><img src="{{ asset('uploads/bloog_images/' . $item->image) }}" height="50px" width="50px" alt=""></td><td>{{ $item->title }}</td>
-                                        <td>{{ $item->short_description }}</td>
-                                        <td>{{ $item->category_name}}</td>
-                                        <td>{{ $item->author}}</td>
-                                        <td>{{ $item->post_date}} || {{ $item->post_time}}</td>
+                                        <td><img src="{{ asset('uploads/bloog_images/' . $item->image) }}" height="50px" width="50px" alt=""></td>
+                                        <td>{{ \Illuminate\Support\Str::limit($item->title, 30) }}</td>
+                                        <td>{{ optional($item->category)->name ?? 'N/A' }}</td>
+                                        <td>{{ $item->author }}</td>
+                                        <td>{{ $item->created_at->format('d-m-Y') }} {{ $item->created_at->format('h:i A') }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary editCategoryBtn"
+                                            <button type="button" class="btn btn-primary editBloogBtn"
                                                 data-id="{{ $item->id }}"
-                                                data-name="{{ $item->name }}"
-                                                data-description="{{ $item->description }}"
+                                                data-title="{{ $item->title }}"
+                                                data-author="{{ $item->author }}"
+                                                data-category_id="{{ optional($item->category)->id }}"
+                                                data-short_description="{{ $item->short_description }}"
+                                                data-long_description="{{ $item->long_description }}"
                                                 data-image="{{ $item->image }}"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#updateCategory">
+                                                data-bs-target="#updateBloog">
                                                 Edit
                                             </button>
-                                            <button class="btn btn-danger deleteCategoryBtn" data-id="{{ $item->id }}">Delete</button>
+                                            <button class="btn btn-danger deleteBloogBtn" data-id="{{ $item->id }}">Delete</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -59,8 +61,7 @@
 </div>
 
 @include('backend.bloog.add_bloog')
-
-
+@include('backend.bloog.edit_bloog')
 
 @endsection
 

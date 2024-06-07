@@ -13,8 +13,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 })->middleware(['verified'])->name('dashboard');
   Route::get('bloog-post/view',[PostController::class,'view'])->name('view.bloog');
   Route::post('bloog-post/create',[PostController::class,'create'])->name('create.bloog');
-  Route::post('bloog-post/update/{id}',[PostController::class,'update'])->name('update.category');
-  Route::delete('bloog-post/delete/{id}', [PostController::class, 'destroy'])->name('delete.category');
+  Route::post('bloog-post/update/{id}',[PostController::class,'update'])->name('update.bloog');
+  
 
 });
 
