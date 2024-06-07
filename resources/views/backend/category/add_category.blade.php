@@ -1,5 +1,5 @@
 <!-- resources/views/backend/category/add_category.blade.php -->
-<div class="modal fade" id="category" tabindex="-1" aria-labelledby="categoryLabel" aria-hidden="true">
+<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="categoryLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
